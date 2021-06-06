@@ -18,7 +18,7 @@ class TaxProcessor
   private
 
   def output_line_for_item(item)
-    "#{item.quantity}, #{item.description}, #{item.price}\n"
+    "#{item.quantity}, #{item.description}, #{sprintf("%.2f", item.price)}\n"
   end
   
   def sales_taxes_output_line

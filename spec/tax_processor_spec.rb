@@ -21,9 +21,30 @@ RSpec.describe TaxProcessor do
       Total: 29.83
 RECEIPT_1
     }
+    
+    let(:shopping_basket_2) {
+      [
+        LineItem.new(quantity: 1, description: 'imported box of chocolates', price: 10.00),
+        LineItem.new(quantity: 1, description: 'imported bottle of perfume', price: 47.50)
+      ]
+    }
+
+    let(:receipt_2) {
+      <<~RECEIPT_2
+      1, imported box of chocolates, 10.50
+      1, imported bottle of perfume, 54.65
+
+      Sales Taxes: 7.65
+      Total: 65.15
+RECEIPT_2
+    }
 
     it "generates expected receipt for first shopping basket" do
       expect(TaxProcessor.new(basket_items: shopping_basket_1).receipt).to eq(receipt_1)
+    end
+
+    it "generates expected receipt for second shopping basket" do
+      expect(TaxProcessor.new(basket_items: shopping_basket_2).receipt).to eq(receipt_2)
     end
   end
 end
