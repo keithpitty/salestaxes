@@ -16,7 +16,7 @@ class Product
   end
 
   def exempt_from_sales_tax?
-    books? || food?
+    books? || food? || medical?
   end
 
   def local?
@@ -33,6 +33,10 @@ class Product
 
   def food?
     @description.include? 'chocolate'
+  end
+
+  def medical?
+    @description.include? 'pills'
   end
 
   def sales_tax
