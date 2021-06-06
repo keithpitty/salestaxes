@@ -8,6 +8,7 @@ RSpec.describe Product do
     let(:imported_chocolates) { Product.new(description: 'imported box of chocolates', price: 10) }
     let(:imported_perfume) { Product.new(description: 'imported bottle of perfume', price: 47.50) }
     let(:more_imported_perfume) { Product.new(description: 'imported bottle of perfume', price: 27.99) }
+    let(:perfume) { Product.new(description: 'bottle of perfume', price: 18.99) }
 
     it "returns correct price for local book" do
       expect(book.price_with_taxes).to eq(12.49)
@@ -31,6 +32,10 @@ RSpec.describe Product do
 
     it "returns correct price for imported bottle of perfume with base price of 27.99" do
       expect(more_imported_perfume.price_with_taxes).to eq(32.19)
+    end
+
+    it "returns correct price for bottle of perfume" do
+      expect(perfume.price_with_taxes).to eq(20.89)
     end
   end
 end
