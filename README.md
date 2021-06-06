@@ -11,7 +11,7 @@ Basic sales tax is applicable at a rate of 10% on all goods, except books, food,
 
 ### Solution
 
-RSpec show that: 
+RSpec tests show that: 
 
 - expected prices are calculated for a variety of products. The logic is captured in a `Product` class.
 - expected receipts are generated for a selection of shopping baskets. Receipts are generated in a `TaxProcessor` class.
