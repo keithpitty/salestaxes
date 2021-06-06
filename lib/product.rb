@@ -1,12 +1,17 @@
 class Product
+  attr_reader :description, :sales_taxes
 
   def initialize(description:, price:)
-    @description = description
+    @description = description.gsub(' cd', ' CD')
     @price = price
   end
 
   def price_with_taxes
     (@price + sales_tax + import_duty).round(2)
+  end
+
+  def sales_taxes
+    (sales_tax + import_duty).round(2)
   end
 
   private
