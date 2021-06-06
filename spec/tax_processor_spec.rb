@@ -39,12 +39,37 @@ RECEIPT_1
 RECEIPT_2
     }
 
+    let(:shopping_basket_3) {
+      [
+        LineItem.new(quantity: 1, description: 'imported bottle of perfume', price: 27.99),
+        LineItem.new(quantity: 1, description: 'bottle of perfume', price: 18.99),
+        LineItem.new(quantity: 1, description: 'packet of headache pills', price: 9.75),
+        LineItem.new(quantity: 1, description: 'box of imported chocolates', price: 11.25)
+      ]
+    }
+
+    let(:receipt_3) {
+      <<~RECEIPT_3
+      1, imported bottle of perfume, 32.19
+      1, bottle of perfume, 20.89
+      1, packet of headache pills, 9.75
+      1, imported box of chocolates, 11.85
+
+      Sales Taxes: 6.70
+      Total: 74.68
+RECEIPT_3
+    }
+
     it "generates expected receipt for first shopping basket" do
       expect(TaxProcessor.new(basket_items: shopping_basket_1).receipt).to eq(receipt_1)
     end
 
     it "generates expected receipt for second shopping basket" do
       expect(TaxProcessor.new(basket_items: shopping_basket_2).receipt).to eq(receipt_2)
+    end
+
+    it "generates expected receipt for third shopping basket" do
+      expect(TaxProcessor.new(basket_items: shopping_basket_3).receipt).to eq(receipt_3)
     end
   end
 end

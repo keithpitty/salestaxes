@@ -7,6 +7,8 @@ class LineItem
   end
 
   def description
+    return "imported #{@product.description}" if @product.imported?
+
     @product.description
   end
 

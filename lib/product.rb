@@ -2,7 +2,8 @@ class Product
   attr_reader :description, :sales_taxes
 
   def initialize(description:, price:)
-    @description = description.gsub(' cd', ' CD')
+    @imported = description.include? 'imported'
+    @description = description.sub(' cd', ' CD').sub('imported ', '')
     @price = price
   end
 
@@ -12,6 +13,10 @@ class Product
 
   def sales_taxes
     (sales_tax + import_duty).round(2)
+  end
+
+  def imported?
+    @imported
   end
 
   private
@@ -26,10 +31,6 @@ class Product
 
   def local?
     !imported?
-  end
-
-  def imported?
-    @description.include? 'imported'
   end
 
   def books?
