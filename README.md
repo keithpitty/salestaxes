@@ -16,5 +16,5 @@ RSpec tests show that:
 - expected prices are calculated for a variety of products. The logic is captured in a `Product` class.
 - expected receipts are generated for a selection of shopping baskets. Receipts are generated in a `TaxProcessor` class.
 
-An extension to this solution would add a script that would process an input CSV file and generate a receipt via the `TaxProcessor` class.
+An extension to this solution would add a script that would process an input CSV file and generate a receipt via the `TaxProcessor` and `LineItem` classes.
 
