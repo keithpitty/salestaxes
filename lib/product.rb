@@ -38,12 +38,22 @@ class Product
   def sales_tax
     return 0 if exempt_from_sales_tax?
 
-    @price * 0.1
+    round_up((@price * 0.1).round(2))
   end
 
   def import_duty
     return 0 if local?
 
-    @price * 0.05
+    round_up((@price * 0.05).round(2))
+  end
+
+  def round_up(tax)
+    return tax if to_nearest_5_cents?(tax)
+
+    round_up((tax + 0.01).round(2))
+  end
+
+  def to_nearest_5_cents?(tax)
+    (tax * 100).to_i.remainder(5) == 0
   end
 end
