@@ -14,7 +14,7 @@ class Product
   private
 
   def exempt_from_sales_tax?
-    @description == 'book'
+    ['book', 'chocolate bar'].include? @description
   end
 
   def price_with_sales_tax
